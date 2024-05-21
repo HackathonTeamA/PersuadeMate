@@ -29,6 +29,9 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+// Serve static files under wwwroot/
+app.UseStaticFiles();
+
 // Apply Default Cors
 app.UseCors();
 
