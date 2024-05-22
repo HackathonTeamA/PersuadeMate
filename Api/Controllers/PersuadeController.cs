@@ -1,19 +1,19 @@
-
 using Microsoft.AspNetCore.Mvc;
 using PersuadeMate.Api.Requests;
 using PersuadeMate.Api.Responses;
+using PersuadeMate.Assistant;
 
 namespace PersuadeMate.Api.Controllers;
 
 /// <summary>
-/// ひとこと提言を取得するためのAPIコントローラです
+///     ひとこと提言を取得するためのAPIコントローラです
 /// </summary>
 [Route("api/[controller]")]
 [ApiController]
-public class PersuadeController : ControllerBase
+public class PersuadeController(IAIAdvisor advisor) : ControllerBase
 {
     /// <summary>
-    /// ひとこと提言を取得します
+    ///     ひとこと提言を取得します
     /// </summary>
     /// <param name="request"></param>
     /// <returns></returns>
@@ -25,11 +25,19 @@ public class PersuadeController : ControllerBase
             return BadRequest(ModelState);
         }
 
-        var response = new ProposalResponse()
+        var response = await advisor.GetAdviceAsync(request.CreateQuestionMessage());
+        if (response.IsError(out var errorMessage))
         {
-            Proposals = ["お肌の健康には、温泉でゆっくりするのが一番"]
-        };
+            return StatusCode(StatusCodes.Status500InternalServerError, errorMessage);
+        }
 
-        return Ok(response);
+        response.IsOk(out var advices);
+
+        // var response = new ProposalResponse
+        // {
+        //     Proposals = ["お肌の健康には、温泉でゆっくりするのが一番"],
+        // };
+
+        return Ok(new ProposalResponse { Proposals = advices });
     }
 }

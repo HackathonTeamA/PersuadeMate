@@ -1,4 +1,6 @@
 using System.Text.Json.Serialization;
+using OpenAI.Extensions;
+using PersuadeMate.Assistant;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +19,16 @@ builder.Services.AddCors(opts =>
 {
     opts.AddDefaultPolicy(policyBuilder => { policyBuilder.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin(); });
 });
+
+// OpenAI
+var apiKey = builder.Configuration.GetValue<string>("OpenAIServiceOptions:ApiKey");
+builder.Services.AddOpenAIService(settings =>
+{
+    settings.ApiKey = apiKey ?? throw new ArgumentNullException(nameof(apiKey));
+});
+
+// AI Advisor service
+builder.Services.AddScoped<IAIAdvisor, AIAdvisor>();
 
 var app = builder.Build();
 

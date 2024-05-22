@@ -3,8 +3,11 @@
 ## how to run
 
 1. install dotnet cli (requirement .NET8)
-2. cd Api
-3. dotnet run
+2. configure environment variables
+   - OpenAIServiceOptions__ApiKey
+   - OpenAIServiceOptions__Organization
+3. cd Api
+4. dotnet run
 
 ## endpoint for development
 
