@@ -3,7 +3,7 @@ namespace PersuadeMate.Assistant;
 /// <summary>
 ///     質問に対して何らかのアドバイスを与える機能のインターフェイスです
 /// </summary>
-public interface IAIAdvisor
+public interface IAdvisor
 {
     /// <summary>
     ///     質問に対して、アドバイスを(いくつか)返却します

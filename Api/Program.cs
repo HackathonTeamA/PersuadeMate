@@ -1,5 +1,6 @@
 using System.Text.Json.Serialization;
 using OpenAI.Extensions;
+using OpenAI.Interfaces;
 using PersuadeMate.Assistant;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -27,8 +28,18 @@ builder.Services.AddOpenAIService(settings =>
     settings.ApiKey = apiKey ?? throw new ArgumentNullException(nameof(apiKey));
 });
 
-// AI Advisor service
-builder.Services.AddScoped<IAIAdvisor, AIAdvisor>();
+// Store Advisor service in DI container
+var advisorName = builder.Configuration.GetValue<AdvisorName>("AdvisorName");
+builder.Services.AddScoped(typeof(IAdvisor), sp =>
+{
+    if (advisorName == AdvisorName.AI)
+    {
+        var openAIService = sp.GetRequiredService<IOpenAIService>();
+        return new AIAdvisor(openAIService);
+    }
+
+    return new StubAdvisor();
+});
 
 var app = builder.Build();
 

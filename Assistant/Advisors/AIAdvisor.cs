@@ -8,7 +8,7 @@ namespace PersuadeMate.Assistant;
 ///     OpenAI を利用して質問に対してアドバイスを回答するクラスです
 /// </summary>
 /// <param name="openAiService">Betalgo.OpenAI の提供する OpenAI SDKです</param>
-public class AIAdvisor(IOpenAIService openAiService) : IAIAdvisor
+public class AIAdvisor(IOpenAIService openAiService) : IAdvisor
 {
     /// <inheritdoc />
     public async Task<Result<List<string>, string>> GetAdviceAsync(string message)

@@ -10,7 +10,7 @@ namespace PersuadeMate.Api.Controllers;
 /// </summary>
 [Route("api/[controller]")]
 [ApiController]
-public class PersuadeController(IAIAdvisor advisor) : ControllerBase
+public class PersuadeController(IAdvisor advisor) : ControllerBase
 {
     /// <summary>
     ///     ひとこと提言を取得します
