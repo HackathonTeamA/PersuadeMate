@@ -1,4 +1,4 @@
-namespace PersuadeMate.Assistant;
+namespace PersuadeMate.Assistant.Values;
 
 /// <summary>
 /// 正常データ、または異常が発生した場合はそのエラーメッセージを保持するデータクラスです

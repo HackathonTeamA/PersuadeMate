@@ -1,4 +1,6 @@
-namespace PersuadeMate.Assistant;
+using PersuadeMate.Assistant.Values;
+
+namespace PersuadeMate.Assistant.Advisors;
 
 /// <summary>
 ///     質問に対して何らかのアドバイスを与える機能のインターフェイスです

@@ -1,8 +1,10 @@
 using OpenAI.Interfaces;
 using OpenAI.ObjectModels;
 using OpenAI.ObjectModels.RequestModels;
+using PersuadeMate.Assistant.Extensions;
+using PersuadeMate.Assistant.Values;
 
-namespace PersuadeMate.Assistant;
+namespace PersuadeMate.Assistant.Advisors;
 
 /// <summary>
 ///     OpenAI を利用して質問に対してアドバイスを回答するクラスです

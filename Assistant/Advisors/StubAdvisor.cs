@@ -1,4 +1,6 @@
-namespace PersuadeMate.Assistant;
+using PersuadeMate.Assistant.Values;
+
+namespace PersuadeMate.Assistant.Advisors;
 
 /// <summary>
 ///     OpenAI に接続せずにダミーの文言を返却するアドバイザーです

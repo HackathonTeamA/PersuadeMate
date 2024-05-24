@@ -1,7 +1,7 @@
 using System.Text.Json.Serialization;
 using OpenAI.Extensions;
 using OpenAI.Interfaces;
-using PersuadeMate.Assistant;
+using PersuadeMate.Assistant.Advisors;
 
 var builder = WebApplication.CreateBuilder(args);
 

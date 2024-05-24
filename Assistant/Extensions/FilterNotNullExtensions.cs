@@ -1,4 +1,4 @@
-namespace PersuadeMate.Assistant;
+namespace PersuadeMate.Assistant.Extensions;
 
 public static class FilterNotNullExtensions
 {
