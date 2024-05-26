@@ -1,4 +1,4 @@
-using PersuadeMate.Assistant.Values;
+using PersuadeMate.Data.Values;
 
 namespace PersuadeMate.Assistant.Advisors;
 

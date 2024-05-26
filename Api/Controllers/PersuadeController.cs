@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
-using PersuadeMate.Api.Requests;
-using PersuadeMate.Api.Responses;
 using PersuadeMate.Assistant.Advisors;
+using PersuadeMate.Data.Requests;
+using PersuadeMate.Data.Responses;
 
 namespace PersuadeMate.Api.Controllers;
 

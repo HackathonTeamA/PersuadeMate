@@ -1,4 +1,4 @@
-namespace PersuadeMate.Api.Requests;
+namespace PersuadeMate.Data;
 
 /// <summary>
 /// 提案したい対象の人の年齢層を示す列挙体です

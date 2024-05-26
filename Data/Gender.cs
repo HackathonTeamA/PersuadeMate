@@ -1,4 +1,4 @@
-namespace PersuadeMate.Api.Requests;
+namespace PersuadeMate.Data;
 
 /// <summary>
 /// 提案する対象の人の性別を示す列挙体です

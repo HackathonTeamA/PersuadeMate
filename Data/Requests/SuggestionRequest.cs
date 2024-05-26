@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace PersuadeMate.Api.Requests;
+namespace PersuadeMate.Data.Requests;
 
 /// <summary>
 /// 一言提案を要求するためのリクエストパラメータです

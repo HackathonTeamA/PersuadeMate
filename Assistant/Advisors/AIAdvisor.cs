@@ -2,7 +2,7 @@ using OpenAI.Interfaces;
 using OpenAI.ObjectModels;
 using OpenAI.ObjectModels.RequestModels;
 using PersuadeMate.Assistant.Extensions;
-using PersuadeMate.Assistant.Values;
+using PersuadeMate.Data.Values;
 
 namespace PersuadeMate.Assistant.Advisors;
 

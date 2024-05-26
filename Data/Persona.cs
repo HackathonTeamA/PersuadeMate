@@ -1,6 +1,4 @@
-using Humanizer;
-
-namespace PersuadeMate.Api.Requests;
+namespace PersuadeMate.Data;
 
 /// <summary>
 /// 提案する対象の人を表現するクラスです

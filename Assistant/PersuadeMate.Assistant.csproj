@@ -10,4 +10,8 @@
         <PackageReference Include="Betalgo.OpenAI" Version="8.2.2"/>
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Data\PersuadeMate.Data.csproj" />
+    </ItemGroup>
+
 </Project>
