@@ -6,14 +6,14 @@ using PersuadeMate.Assistant.Advisors;
 namespace PersuadeMate.Api.Controllers;
 
 /// <summary>
-///     ひとこと提言を取得するためのAPIコントローラです
+/// ひとこと提言を取得するためのAPIコントローラです
 /// </summary>
 [Route("api/[controller]")]
 [ApiController]
 public class PersuadeController(IAdvisor advisor) : ControllerBase
 {
     /// <summary>
-    ///     ひとこと提言を取得します
+    /// ひとこと提言を取得します
     /// </summary>
     /// <param name="request"></param>
     /// <returns></returns>
@@ -32,11 +32,6 @@ public class PersuadeController(IAdvisor advisor) : ControllerBase
         }
 
         response.IsOk(out var advices);
-
-        // var response = new ProposalResponse
-        // {
-        //     Proposals = ["お肌の健康には、温泉でゆっくりするのが一番"],
-        // };
 
         return Ok(new ProposalResponse { Proposals = advices });
     }

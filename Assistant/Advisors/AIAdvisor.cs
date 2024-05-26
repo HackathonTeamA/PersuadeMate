@@ -7,7 +7,7 @@ using PersuadeMate.Assistant.Values;
 namespace PersuadeMate.Assistant.Advisors;
 
 /// <summary>
-///     OpenAI を利用して質問に対してアドバイスを回答するクラスです
+/// OpenAI を利用して質問に対してアドバイスを回答するクラスです
 /// </summary>
 /// <param name="openAiService">Betalgo.OpenAI の提供する OpenAI SDKです</param>
 public class AIAdvisor(IOpenAIService openAiService) : IAdvisor

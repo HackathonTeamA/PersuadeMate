@@ -3,10 +3,11 @@ using PersuadeMate.Assistant.Values;
 namespace PersuadeMate.Assistant.Advisors;
 
 /// <summary>
-///     OpenAI に接続せずにダミーの文言を返却するアドバイザーです
+/// OpenAI に接続せずにダミーの文言を返却するアドバイザーです
 /// </summary>
 public class StubAdvisor : IAdvisor
 {
+    /// <inheritdoc />
     public async Task<Result<List<string>, string>> GetAdviceAsync(string message)
     {
         return await Task.Run(() =>

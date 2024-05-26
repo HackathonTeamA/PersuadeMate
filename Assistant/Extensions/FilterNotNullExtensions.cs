@@ -3,7 +3,7 @@ namespace PersuadeMate.Assistant.Extensions;
 public static class FilterNotNullExtensions
 {
     /// <summary>
-    ///     一覧データから要素が null でないものだけを取り出す拡張メソッドです
+    /// 一覧データから要素が null でないものだけを取り出す拡張メソッドです
     /// </summary>
     /// <param name="source">元となる一覧データです</param>
     /// <typeparam name="T">一覧データの要素の型です</typeparam>
