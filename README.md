@@ -23,5 +23,5 @@ If you want to see all tasks, execute `just run tasks`.
 ## endpoint for development
 
 - https://localhost:7114/
-- http://localhost:5157
+- http://localhost:8080
 
