@@ -25,14 +25,14 @@ public class PersuadeController(IAdvisor advisor) : ControllerBase
             return BadRequest(ModelState);
         }
 
-        var response = await advisor.GetAdviceAsync(request.CreateQuestionMessage());
+        var response = await advisor.GetAdviceAsync(request);
         if (response.IsError(out var errorMessage))
         {
             return StatusCode(StatusCodes.Status500InternalServerError, errorMessage);
         }
 
-        response.IsOk(out var advices);
+        response.IsOk(out var candidates);
 
-        return Ok(new ProposalResponse { Proposals = advices });
+        return Ok(new ProposalResponse { Proposals = candidates.ToList() });
     }
 }

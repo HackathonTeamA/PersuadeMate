@@ -1,3 +1,5 @@
+using PersuadeMate.Data;
+using PersuadeMate.Data.Requests;
 using PersuadeMate.Data.Values;
 
 namespace PersuadeMate.Assistant.Advisors;
@@ -8,12 +10,19 @@ namespace PersuadeMate.Assistant.Advisors;
 public class StubAdvisor : IAdvisor
 {
     /// <inheritdoc />
-    public async Task<Result<List<string>, string>> GetAdviceAsync(string message)
+    public async Task<Result<IEnumerable<Candidate>, string>> GetAdviceAsync(SuggestionRequest request)
     {
         return await Task.Run(() =>
         {
-            List<string> advices = ["週末は温泉に浸かりながら、心身をリフレッシュするのがお勧めです。"];
-            return new Result<List<string>, string>(advices);
+            List<Candidate> advices =
+            [
+                new Candidate()
+                {
+                    Proposal = "週末は温泉に浸かりながら、心身をリフレッシュするのがお勧めです。",
+                    SelfEvaluation = "中々興味をそそられる提案ですね。評価は 80点です。"
+                }
+            ];
+            return new Result<IEnumerable<Candidate>, string>(advices);
         });
     }
 }

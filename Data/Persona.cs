@@ -19,4 +19,32 @@ public record class Persona
     /// 趣味・嗜好です
     /// </summary>
     public List<string> Preferences { get; set; } = [];
+
+    /// <summary>
+    /// 提案する対象者の人となりを表現する言葉です
+    /// </summary>
+    public string Personality
+    {
+        get
+        {
+            var gender = Gender switch
+            {
+                Data.Gender.Male => "男性",
+                Data.Gender.Female => "女性",
+                _ => "性別は不明",
+            };
+            var age = Age switch
+            {
+                Data.Age.Teens => "10歳代",
+                Data.Age.Twenties => "20歳代",
+                Data.Age.Thirties => "30歳代",
+                Data.Age.Forties => "40歳代",
+                _ => "年齢層は不明",
+            };
+
+            var preferences = string.Join("で、", Preferences);
+
+            return $"{preferences}。{age}の{gender}です。";
+        }
+    }
 }
