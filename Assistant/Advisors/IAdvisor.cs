@@ -1,3 +1,5 @@
+using PersuadeMate.Data;
+using PersuadeMate.Data.Requests;
 using PersuadeMate.Data.Values;
 
 namespace PersuadeMate.Assistant.Advisors;
@@ -8,9 +10,9 @@ namespace PersuadeMate.Assistant.Advisors;
 public interface IAdvisor
 {
     /// <summary>
-    /// 質問に対して、アドバイスを(いくつか)返却します
+    /// 質問に対して、アドバイスを(いくつか)返却します。同時にアドバイスの自己評価も行います
     /// </summary>
-    /// <param name="message">質問の文言です</param>
+    /// <param name="request">提案対象者の特徴や提案したい事柄です</param>
     /// <returns></returns>
-    Task<Result<List<string>, string>> GetAdviceAsync(string message);
+    Task<Result<IEnumerable<Candidate>, string>> GetAdviceAsync(SuggestionRequest request);
 }

@@ -8,5 +8,5 @@ public class ProposalResponse
     /// <summary>
     /// ひとこと提言です。候補をいくつか配列に格納されます
     /// </summary>
-    public List<string> Proposals { get; set; } = [];
+    public List<Candidate> Proposals { get; set; } = [];
 }

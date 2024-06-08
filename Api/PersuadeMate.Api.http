@@ -1,6 +1,34 @@
-@PersuadeMate.Api_HostAddress = http://localhost:8080
+@dev_uri = http://localhost:8080/api
+@prod_uri = https://persuademate-ovkyr72pqq-an.a.run.app/api
 
-GET {{PersuadeMate.Api_HostAddress}}/weatherforecast/
-Accept: application/json
+### sample test request
 
-###
+POST {{dev_uri}}/Persuade
+Content-Type: application/json
+
+{
+  "proposedTo": {
+    "gender": "Male",
+    "age": "Thirties",
+    "preferences": [
+      "アウトドア派", "交友関係は広い", "新しいことにチャレンジすることが好き"
+    ]
+  },
+  "suggestion": "今週末、温泉旅行に行く"
+}
+
+### sample production request
+
+POST {{prod_uri}}/Persuade
+Content-Type: application/json
+
+{
+  "proposedTo": {
+    "gender": "Male",
+    "age": "Thirties",
+    "preferences": [
+      "アウトドア派", "交友関係は広い", "新しいことにチャレンジすることが好き"
+    ]
+  },
+  "suggestion": "今週末、温泉旅行に行く"
+}
