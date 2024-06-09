@@ -2,7 +2,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using OpenAI.Extensions;
 using OpenAI.Interfaces;
-
 using PersuadeMate.Assistant.Advisors;
 using PersuadeMate.Assistant.Ages;
 using PersuadeMate.Data.Interfaces;
@@ -31,17 +30,18 @@ public static class ServiceCollectionsExtensions
             settings.ApiKey = apiKey ?? throw new ArgumentNullException(nameof(apiKey));
         });
 
-       // Store Advisor service in DI container
+        // Store Advisor service in DI container
         var advisorName = configuration.GetValue<AdvisorName>("AdvisorName");
         services.AddScoped(typeof(IAdvisor), sp =>
         {
-            if (advisorName == AdvisorName.AI)
+            if (advisorName == AdvisorName.Stub)
             {
-                var openAIService = sp.GetRequiredService<IOpenAIService>();
-                return new AIAdvisor(openAIService);
+                return new StubAdvisor();
             }
 
-            return new StubAdvisor();
+            var openAIService = sp.GetRequiredService<IOpenAIService>();
+            var fineTune = advisorName == AdvisorName.God;
+            return new AIAdvisor(openAIService, fineTune);
         });
 
         // Store Ages static Repository in DI container

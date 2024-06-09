@@ -9,9 +9,14 @@ namespace PersuadeMate.Assistant.Advisors;
 public enum AdvisorName
 {
     /// <summary>
-    /// OpenAI API を用いた IAdvisor 実装を使用します
+    /// OpenAI API Model GPT3.5Turbo を用いた Advisor 実装を使用します
     /// </summary>
     AI,
+
+    /// <summary>
+    /// OpenAI API Model GPT4o を用いたアドバイザー実装を使用します
+    /// </summary>
+    God,
 
     /// <summary>
     /// テスト用にスタブデータを返却する IAdvisor 実装を使用します
