@@ -1,4 +1,6 @@
-namespace PersuadeMate.Data.Responses;
+using PersuadeMate.Data;
+
+namespace PersuadeMate.Api.Responses;
 
 /// <summary>
 /// APIから返却されるひとこと提言を保持するレスポンスを表現するクラスです

@@ -4,7 +4,7 @@ using OpenAI.ObjectModels.RequestModels;
 using OpenAI.ObjectModels.ResponseModels;
 using PersuadeMate.Assistant.Extensions;
 using PersuadeMate.Data;
-using PersuadeMate.Data.Requests;
+using PersuadeMate.Data.Interfaces;
 using PersuadeMate.Data.Values;
 
 namespace PersuadeMate.Assistant.Advisors;
@@ -38,12 +38,12 @@ public class AIAdvisor(IOpenAIService openAiService) : IAdvisor
     }
 
     /// <inheritdoc />
-    public async Task<Result<IEnumerable<Candidate>, string>> GetAdviceAsync(SuggestionRequest request)
+    public async Task<Result<IEnumerable<Candidate>, string>> GetAdviceAsync(Question question)
     {
         var response = await Chat(messages:
             [
                 ChatMessage.FromSystem(YouAreGod),
-                ChatMessage.FromUser(request.QuestionMessage),
+                ChatMessage.FromUser(question.Message),
             ],
             n: 5
         );
@@ -62,7 +62,7 @@ public class AIAdvisor(IOpenAIService openAiService) : IAdvisor
                 .Select(proposal => Chat(
                     messages:
                     [
-                        ChatMessage.FromSystem($"あなたは、${request.ProposedTo.Personality}な人物です。"),
+                        ChatMessage.FromSystem($"あなたは、${question.Persona.Personality}な人物です。"),
                         ChatMessage.FromUser(
                             $"""
                              あなたは次のような提案を受け取りました。

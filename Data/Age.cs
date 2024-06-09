@@ -1,27 +1,36 @@
 namespace PersuadeMate.Data;
 
 /// <summary>
-/// 提案したい対象の人の年齢層を示す列挙体です
+/// 年代を表現するレコードタイプです
 /// </summary>
-public enum Age
+/// <param name="Key">年代を識別するキーです</param>
+/// <param name="Name">年代の日本語表現です</param>
+/// <param name="Order">年代を若い順に並べる時のソートキーです</param>
+public record Age(string Key, string Name, int Order)
 {
     /// <summary>
-    /// 10代
+    /// 年代の等値性をキーの等値性で判断します
     /// </summary>
-    Teens,
+    /// <param name="other"></param>
+    /// <returns></returns>
+    public virtual bool Equals(Age? other)
+    {
+        if (ReferenceEquals(null, other))
+        {
+            return false;
+        }
+
+        if (ReferenceEquals(this, other))
+        {
+            return true;
+        }
+
+        return Key == other.Key;
+    }
 
     /// <summary>
-    /// 20代
+    /// 年代のハッシュコードをキーから計算します
     /// </summary>
-    Twenties,
-
-    /// <summary>
-    /// 30代
-    /// </summary>
-    Thirties,
-
-    /// <summary>
-    /// 40代
-    /// </summary>
-    Forties
+    /// <returns></returns>
+    public override int GetHashCode() => Key.GetHashCode();
 }

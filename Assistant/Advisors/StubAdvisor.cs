@@ -1,5 +1,5 @@
 using PersuadeMate.Data;
-using PersuadeMate.Data.Requests;
+using PersuadeMate.Data.Interfaces;
 using PersuadeMate.Data.Values;
 
 namespace PersuadeMate.Assistant.Advisors;
@@ -10,7 +10,7 @@ namespace PersuadeMate.Assistant.Advisors;
 public class StubAdvisor : IAdvisor
 {
     /// <inheritdoc />
-    public async Task<Result<IEnumerable<Candidate>, string>> GetAdviceAsync(SuggestionRequest request)
+    public async Task<Result<IEnumerable<Candidate>, string>> GetAdviceAsync(Question question)
     {
         return await Task.Run(() =>
         {
