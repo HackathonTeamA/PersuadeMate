@@ -1,33 +1,29 @@
-using System.ComponentModel.DataAnnotations;
-
-namespace PersuadeMate.Data.Requests;
+namespace PersuadeMate.Data;
 
 /// <summary>
-/// 一言提案を要求するためのリクエストパラメータです
+/// アドバイザーに一言提案を求めるための質問です
 /// </summary>
-public class SuggestionRequest
+public class Question
 {
     /// <summary>
     /// 提案をする対象の属性、趣味嗜好を表す内容です
     /// </summary>
-    [Required]
-    public Persona ProposedTo { get; set; } = new();
+    public Persona Persona { get; set; } = new();
 
     /// <summary>
     /// 提案したい具体的な内容です
     /// </summary>
-    [Required]
     public string Suggestion { get; set; } = string.Empty;
 
     /// <summary>
     /// 提案する対象者の属性から、質問する文言を構築します
     /// </summary>
     /// <returns></returns>
-    public string QuestionMessage =>
+    public string Message =>
         $"""
          次のような人に対して、{Suggestion}に誘いたいです。
          よいプレゼンテーションの文言を100文字程度にまとめて提案してください。
 
-         その人は {ProposedTo.Personality}です。
+         その人は {Persona.Personality}です。
          """;
 }

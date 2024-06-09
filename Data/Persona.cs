@@ -11,7 +11,7 @@ public record class Persona
     public Gender? Gender { get; set; }
 
     /// <summary>
-    /// 年齢層です
+    /// 年代です
     /// </summary>
     public Age? Age { get; set; }
 
@@ -33,14 +33,7 @@ public record class Persona
                 Data.Gender.Female => "女性",
                 _ => "性別は不明",
             };
-            var age = Age switch
-            {
-                Data.Age.Teens => "10歳代",
-                Data.Age.Twenties => "20歳代",
-                Data.Age.Thirties => "30歳代",
-                Data.Age.Forties => "40歳代",
-                _ => "年齢層は不明",
-            };
+            var age = Age is null ? "年齢層は不明" : Age.Name;
 
             var preferences = string.Join("で、", Preferences);
 
