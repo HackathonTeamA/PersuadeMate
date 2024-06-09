@@ -25,3 +25,9 @@ If you want to see all tasks, execute `just run tasks`.
 - https://localhost:7114/
 - http://localhost:8080
 
+## endpoint for production
+
+- frontend
+  - https://persuademate-frontend-ovkyr72pqq-an.a.run.app/
+- backend
+  - https://persuademate-ovkyr72pqq-an.a.run.app/api
