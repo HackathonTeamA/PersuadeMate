@@ -7,13 +7,11 @@ POST {{dev_uri}}/Persuade
 Content-Type: application/json
 
 {
-  "proposedTo": {
-    "gender": "Male",
-    "age": "Thirties",
-    "preferences": [
-      "アウトドア派", "交友関係は広い", "新しいことにチャレンジすることが好き"
-    ]
-  },
+  "interviews": [
+    { "question": "その人の性別を聞いても良いか？", "answer": "男性" },
+    { "question": "その人の年代を聞いても良いか？", "answer": "30代" },
+    { "question": "その人はどんな人じゃ？", "answer": "アウトドア派、交友関係は広い、新しいことにチャレンジすることが好き" }
+  ],
   "suggestion": "今週末、温泉旅行に行く"
 }
 

@@ -10,7 +10,8 @@ public interface IAdvisor
     /// <summary>
     /// 質問に対して、アドバイスを(いくつか)返却します。同時にアドバイスの自己評価も行います
     /// </summary>
-    /// <param name="question">提案対象者の特徴や提案したい事柄です</param>
+    /// <param name="interviews">提案対象者の特徴に関する問答内容です</param>
+    /// <param name="suggestion">提案したい内容です</param>
     /// <returns></returns>
-    Task<Result<IEnumerable<Candidate>, string>> GetAdviceAsync(Question question);
+    Task<Result<IEnumerable<Candidate>, string>> GetAdviceAsync(List<Interview> interviews, string suggestion);
 }
