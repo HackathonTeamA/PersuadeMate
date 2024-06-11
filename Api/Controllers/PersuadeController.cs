@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using PersuadeMate.Api.Requests;
 using PersuadeMate.Api.Responses;
-using PersuadeMate.Data;
 using PersuadeMate.Data.Interfaces;
 
 namespace PersuadeMate.Api.Controllers;
@@ -11,7 +10,7 @@ namespace PersuadeMate.Api.Controllers;
 /// </summary>
 [Route("api/[controller]")]
 [ApiController]
-public class PersuadeController(IAdvisor advisor, IAgesRepository agesRepository) : ControllerBase
+public class PersuadeController(IAdvisor advisor) : ControllerBase
 {
     /// <summary>
     /// ひとこと提言を取得します
@@ -26,20 +25,7 @@ public class PersuadeController(IAdvisor advisor, IAgesRepository agesRepository
             return BadRequest(ModelState);
         }
 
-        var age = request.ProposedTo.Age is null ? null : agesRepository.GetAgeByKey(request.ProposedTo.Age);
-
-        var question = new Question()
-        {
-            Persona = new Persona()
-            {
-                Gender = request.ProposedTo.Gender,
-                Age = age,
-                Preferences = request.ProposedTo.Preferences,
-            },
-            Suggestion = request.Suggestion,
-        };
-
-        var response = await advisor.GetAdviceAsync(question);
+        var response = await advisor.GetAdviceAsync(request.Interviews, request.Suggestion);
         if (response.IsError(out var errorMessage))
         {
             return StatusCode(StatusCodes.Status500InternalServerError, errorMessage);
